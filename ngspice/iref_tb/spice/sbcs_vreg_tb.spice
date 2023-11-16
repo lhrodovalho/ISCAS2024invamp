@@ -1,0 +1,48 @@
+* inverter testbench
+
+.include "../../models/design.ngspice"
+.lib "../../models/sm141064.ngspice" ss
+*.lib "../../models/sm141064.ngspice" typical
+*.lib "../../models/sm141064.ngspice" ff
+.lib ../../models/sm141064.ngspice mimcap_typical
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+.temp -40
+
+*.include array.spice
+*.include sbcs.spice
+.include ../../netlists/ref.spice
+.include ../../netlists/bias.spice
+.include ../../netlists/sbcs_vreg.spice
+.include ../../../magic/ampb.spice
+
+.param pvhi_max = 6.0
+.param pvhi     = 3.3
+vhi0 vhi0 0   {pvhi_max} pulse(10m {pvhi_max} 1u)
+vhid vhi0 vhi {pvhi_max-pvhi}
+vss vss 0 0
+
+xref  ref            vdd    vss ref
+xbias ref iq0 vhi gp vdd bp vss bias
+xvreg iq  gp  vhi           vss sbcs_vreg
+vo iq iq0 0
+
+*ecm cm vss vdd vss 0.5
+*xdut o cm o vhi gp vdd bp vss ampb
+
+.ic v(vhi)={pvhi}
+*.option gmin=1e-15
+.option method="Gear"
+.control
+	dc vhid 0 4.5 10m
+	plot i(vo) vs vhi ylimit 6u 9u
+	plot vhi vs vhi vdd vs vhi
+	let psr = abs(deriv(vdd)/deriv(vhi))
+	plot psr vs vhi ylog
+
+	plot vdd vs vhi xbias.q vs vhi
+	
+*	tran 40u 40m 40u uic
+*	plot i(vo)
+.endc

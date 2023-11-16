@@ -1,0 +1,157 @@
+* Self-biased current source
+
+.subckt sbcs io vdd vss
+x0a vdd s   vdd vdd p6v2_1
+x0b bpa s   bnb vss n6v1_1
+x0c s   bnb vss vss n6v1_1
+
+x1a d1a bpa vdd vdd p6v2_1
+x1b z   bpb d1a vdd p6v2_1
+x1c z   z   x   vss n6v2_1
+x1d x   x   y   vss n3v1_1
+x1e y   x   vss vss n3v2_1
+
+x2a d2a bpa vdd vdd p6v1_2
+x2b bpa bpb d2a vdd p6v1_2
+x2c bpa bnb d2d vss n6v1_2
+x2d d2d bna y   vss n3v1_1
+
+x3a d3a bpa vdd vdd p6v1_2
+x3b bnb bpb d3a vdd p6v1_2
+x3c bnb bnb bna vss n6v1_2
+x3d bna bna vss vss n3v1_2
+
+x4a bpb bpb vdd vdd p6v1_4
+x4c bpb bnb d4d vss n6v2_1
+x4d d4d bna vss vss n3v2_1
+
+x5c io  bnb d5d vss n6v2_1
+x5d d5d bna vss vss n3v2_1
+.ends
+
+.subckt sbcs0 io vdd vss
+xp0a vdd s   vdd vdd p3v2_1
+xn0b bp  s   bn  vss n3v1_1
+xn0a s   bn  vss vss n3v1_1
+
+xp1a x   bp  vdd vdd p3v2_1
+xn1b x   x   y   vss n3v1_1
+xn1a y   x   vss vss n3v2_1
+
+xp2a bn0 bp  vdd vdd p3v1_2
+xn2b bn0 bn0 y   vss n3v1_1
+
+xp3a bn  bp  vdd vdd p3v1_2
+xn3a bn  bn  vss vss n3v1_2
+
+xp4a bp  bp0 vdd vdd p3v1_2
+xn4a bp  bn  vss vss n3v1_2
+
+xp5a bp0 bp0 vdd vdd p3v1_2
+xn5a bp0 bn0 vss vss n3v1_2
+
+xp6a io bp vdd vdd p3v1_2
+.ends
+
+.subckt sbcs1 io vdd vss
+x0a vdd s   vdd vdd p3v2_1
+x0b bpa s   bna vss n3v1_1
+x0c s   bna vss vss n3v1_1
+
+x1a x   bp  vdd vdd p3v2_1
+x1c x   x   y   vss n3v1_1
+x1d y   x   vss vss n3v2_1
+
+x2a bp  bp  vdd vdd p3v1_2
+x2b bp  bnb d2d vss n3v1_2
+x2c d2d bna y   vss n3v1_1
+
+x3a bnb bp  vdd vdd p3v1_2
+x3b bnb bnb bna vss n3v1_2
+x3c bna bna vss vss n3v1_2
+
+x6a io  bp  vdd vdd p3v1_2
+.ends
+
+.subckt sbcs2 io vdd vss
+x0a vdd s   vdd vdd p3v2_1
+x0b bpa s   bna vss n3v1_1
+x0c s   bna vss vss n3v1_1
+
+x1a d1a bpa vdd vdd p3v2_1
+x1b x   bpb d1a vdd p3v2_1
+x1c x   x   y   vss n3v1_1
+x1d y   x   vss vss n3v2_1
+
+x2a bpa bpa vdd vdd p3v1_2
+x2b bpb bpb bpa vdd p3v1_2
+x2c bpb bnb d2d vss n3v1_2
+x2d d2d bna y   vss n3v1_1
+
+x3a d3a bpa vdd vdd p3v1_2
+x3b bnb bpb d3a vdd p3v1_2
+x3c bnb bnb bna vss n3v1_2
+x3d bna bna vss vss n3v1_2
+
+x6a d6a bpa vdd vdd p3v1_2
+x6b io  bpb d6a vdd p3v1_2
+.ends
+
+.subckt sbcs3 io vdd vss
+x0a vdd s   vdd vdd p3v2_1
+x0b bpa s   bna vss n3v1_1
+x0c s   bna vss vss n3v1_1
+
+x1a d1a bpa vdd vdd p3v2_1
+x1b z   bpb d1a vdd p3v2_1
+x1c z   z   x   vss n3v2_1
+x1d x   x   y   vss n3v1_1
+x1e y   x   vss vss n3v2_1
+
+x2a d2a bpa vdd vdd p3v1_2
+x2b bpa bpb d2a vdd p3v1_2
+x2c bpa bnb d2d vss n6v1_2
+x2d d2d bna y   vss n3v1_1
+
+x3a d3a bpa vdd vdd p3v1_2
+x3b bnb bpb d3a vdd p3v1_2
+x3c bnb bnb bna vss n6v1_2
+x3d bna bna vss vss n3v1_2
+
+x4a bpb bpb vdd vdd p3v1_4
+x3c bpb bnb d4d vss n3v2_1
+x4d d4d bna vss vss n3v2_1
+
+x6a d6a bpa vdd vdd p3v1_2
+x6b io  bpb d6a vdd p3v1_2
+.ends
+
+.subckt sbcs4 io vdd vss
+x0a vdd s   vdd vdd p6v2_1
+x0b bpa s   bn  vss n6v1_1
+x0c s   bnb vss vss n6v1_1
+
+x1a d1a bpa vdd vdd p6v2_1
+x1b x   bpb d1a vdd p6v2_1
+x1c x   x   d1d vss n6v2_1
+x1d d1d x   y   vss n3v1_1
+x1e y   x   vss vss n3v2_1
+
+x2a d2a bpa vdd vdd p6v1_2
+x2b bpa bpb d2a vdd p6v1_2
+x2c bpa bn  d2d vss n6v1_2
+x2d d2d bn  y   vss n3v1_1
+
+x3a d3a bpa vdd vdd p6v1_2
+x3b bn  bpb d3a vdd p6v1_2
+x3c bn  bn  d3d vss n6v1_2
+x3d d3d bn  vss vss n3v1_2
+
+x4a bpb bpb vdd vdd p6v1_4
+x4c bpb bn  d4d vss n6v2_1
+x4d d4d bn  vss vss n3v2_1
+
+x5c io  bn  d5d vss n6v2_1
+x5d d5d bn  vss vss n3v2_1
+.ends
+

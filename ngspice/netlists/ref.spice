@@ -1,0 +1,15 @@
+* NGSPICE file created from ref.ext - technology: gf180mcuC
+
+.subckt ref ref vdd vss
+X0 vss tihi tilo vss nfet_03v3 ad=1.08p pd=4.8u as=1.08p ps=4.8u w=1.8u l=3u
+X1 vdd tihi tihi vdd pfet_06v0 ad=1.08p pd=4.8u as=1.08p ps=4.8u w=1.8u l=3u
+X2 vss tilo ref ref pfet_06v0 ad=1.08p pd=4.8u as=1.08p ps=4.8u w=1.8u l=3u
+X3 vdd ref ref vdd pfet_06v0 ad=1.08p pd=4.8u as=1.08p ps=4.8u w=1.8u l=3u
+X4 ref ref vdd vdd pfet_06v0 ad=1.08p pd=4.8u as=1.08p ps=4.8u w=1.8u l=3u
+X5 ref tilo vss ref pfet_06v0 ad=1.08p pd=4.8u as=1.08p ps=4.8u w=1.8u l=3u
+C0 vdd tilo 1.42f
+C1 vdd ref 5.93f
+C2 ref tilo 4.23f
+C3 vdd tihi 2.47f
+.ends
+

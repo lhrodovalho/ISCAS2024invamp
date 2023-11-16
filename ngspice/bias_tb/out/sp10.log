@@ -1,0 +1,59 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * inverter testbench
+
+Doing analysis at TEMP = 70.000000 and TNOM = 27.000000
+
+Note: vdd: dc value used for op instead of transient time=0 value.
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   3.1623E-06 Note: One successful gmin step
+Trying gmin =   5.6234E-07 Note: One successful gmin step
+Trying gmin =   5.6234E-08 Warning: Further gmin increment
+Trying gmin =   3.1623E-07 Warning: Further gmin increment
+Trying gmin =   4.8697E-07 Note: One successful gmin step
+Trying gmin =   3.9242E-07 Note: One successful gmin step
+Trying gmin =   2.8387E-07 Warning: Further gmin increment
+Trying gmin =   3.6190E-07 Note: One successful gmin step
+Trying gmin =   3.2052E-07 Note: One successful gmin step
+Trying gmin =   2.6715E-07 Note: One successful gmin step
+Trying gmin =   2.0329E-07 Note: One successful gmin step
+Trying gmin =   1.3494E-07 Note: One successful gmin step
+Trying gmin =   7.2972E-08 Note: One successful gmin step
+Trying gmin =   2.9021E-08 Note: One successful gmin step
+Trying gmin =   7.2783E-09 Note: One successful gmin step
+Trying gmin =   9.1414E-10 Note: One successful gmin step
+Trying gmin =   9.1414E-11 Note: One successful gmin step
+Trying gmin =   1.0000E-11 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 501
+vddmin              =  2.014506e+00
+vreg0               =  1.687164e+00
+vq0                 =  8.427276e-01
+iq0                 =  7.400765e-06
+qerr = -1.01282e-03
+drop = 3.273420e-01
+binary raw file "./out/{num}.raw"
+Doing analysis at TEMP = 70.000000 and TNOM = 27.000000
+
+Note: vdd: dc value used for op instead of transient time=0 value.
+
+Total analysis time (seconds) = 0.687
+
+Total elapsed time (seconds) = 0.865 
+
+Total DRAM available = 7841.914 MB.
+DRAM currently available = 1037.445 MB.
+Maximum ngspice program size =   37.957 MB.
+Current ngspice program size =   19.461 MB.
+
+Shared ngspice pages =   10.172 MB.
+Text (code) pages =    5.461 MB.
+Stack = 0 bytes.
+Library pages =   17.516 MB.
+

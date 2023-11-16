@@ -1,0 +1,202 @@
+* inverter testbench
+
+.include "../../models/design.ngspice"
+*.lib "../../models/sm141064.ngspice" ss
+*.lib "../../models/sm141064.ngspice" sf
+.lib "../../models/sm141064.ngspice" typical
+*.lib "../../models/sm141064.ngspice" fs
+*.lib "../../models/sm141064.ngspice" ff
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+.temp 25
+
+.include array.spice
+.include inv_bias.spice
+.include ldo.spice
+
+.subckt inv1_1 in out vhi gp vdd bp vss
+xa vdd gp  vhi vhi p6v1_1
+xb out in  vdd bp  p3v1_1
+xc out in  vss vss n3v1_1
+.ends
+
+.subckt inv2_1 in out vhi gp vdd bp vss
+xl in out vhi gp vdd bp vss inv1_1
+xr in out vhi gp vdd bp vss inv1_1
+.ends
+
+.subckt amp_test ip im op om vhi gp vdd bp vss
+xap ip om vhi gp vdd bp vss inv2_1
+xam im op vhi gp vdd bp vss inv2_1
+.ends
+
+.subckt nauta ip im op om vhi gp vdd bp vss
+xap ip om vhi gp vdd bp vss inv2_1
+xam im op vhi gp vdd bp vss inv2_1
+xbp op om vhi gp vdd bp vss inv1_1
+xbm om op vhi gp vdd bp vss inv1_1
+xcp om om vhi gp vdd bp vss inv1_1
+xcm op op vhi gp vdd bp vss inv1_1
+.ends
+
+
+.subckt manf ip im op om vhi gp vdd bp vss
+xap ip om vhi gp vdd bp vss inv2_1
+xam im op vhi gp vdd bp vss inv2_1
+xdp x  op vhi gp vdd bp vss inv2_1
+xdm x  om vhi gp vdd bp vss inv2_1
+xep op y  vhi gp vdd bp vss inv1_1
+xem om y  vhi gp vdd bp vss inv1_1
+xf  y  y  vhi gp vdd bp vss inv2_1
+xg  y  x  vhi gp vdd bp vss inv2_1
+.ends
+
+.subckt barthmanf ip im op om vhi gp vdd bp vss
+xap ip om vhi gp vdd bp vss inv2_1
+xam im op vhi gp vdd bp vss inv2_1
+xbp ip x  vhi gp vdd bp vss inv1_1
+xbm im x  vhi gp vdd bp vss inv1_1
+xc  x  x  vhi gp vdd bp vss inv2_1
+xdp x  op vhi gp vdd bp vss inv2_1
+xdm x  om vhi gp vdd bp vss inv2_1
+xep op y  vhi gp vdd bp vss inv1_1
+xem om y  vhi gp vdd bp vss inv1_1
+xf  y  y  vhi gp vdd bp vss inv2_1
+xg  y  x  vhi gp vdd bp vss inv2_1
+.ends
+
+.subckt vieru ip im op om vhi gp vdd bp vss
+xap ip om vhi gp vdd bp vss inv2_1
+xam im op vhi gp vdd bp vss inv2_1
+xbp op x  vhi gp vdd bp vss inv1_1
+xbm om x  vhi gp vdd bp vss inv1_1
+xc  x  x  vhi gp vdd bp vss inv2_1
+xdp x  ip vhi gp vdd bp vss inv1_1
+xdm x  im vhi gp vdd bp vss inv1_1
+.ends
+
+.subckt vierunauta ip im op om vhi gp vdd bp vss
+xap ip om vhi gp vdd bp vss inv2_1
+xam im op vhi gp vdd bp vss inv2_1
+xbp op x  vhi gp vdd bp vss inv1_1
+xbm om x  vhi gp vdd bp vss inv1_1
+xc  x  x  vhi gp vdd bp vss inv2_1
+xdp x  ip vhi gp vdd bp vss inv1_1
+xdm x  im vhi gp vdd bp vss inv1_1
+xep op y  vhi gp vdd bp vss inv1_1
+xem om y  vhi gp vdd bp vss inv1_1
+xf  y  y  vhi gp vdd bp vss inv2_1
+xg  y  x  vhi gp vdd bp vss inv2_1
+xh  x  x  vhi gp vdd bp vss inv2_1
+xip x  op vhi gp vdd bp vss inv2_1
+xim x  om vhi gp vdd bp vss inv2_1
+.ends
+
+.subckt rld ip im cm vhi gp vdd bp vss
+xap ip x  vhi gp vdd bp vss inv1_1
+xam im x  vhi gp vdd bp vss inv1_1
+xb  x  x  vhi gp vdd bp vss inv2_1
+xc  x  y  vhi gp vdd bp vss inv1_1
+xd  y  cm vhi gp vdd bp vss inv2_1
+xep ip cm vhi gp vdd bp vss inv1_1
+xem im cm vhi gp vdd bp vss inv1_1
+cc y cm 100f 
+.ends
+
+.subckt pseudo a b q vss
+xa a x x q p3v1_1
+xb b x x b p3v1_1
+.ends
+
+.subckt preamp ip im op om vhi gp vdd bp vss
+
+*xamp xp xm op om vhi gp vdd bp vss barthmanf
+*xamp xp xm op om vhi gp vdd bp vss manf
+*xamp xp xm op om vhi gp vdd bp vss nauta
+xamp xp xm op om vhi gp vdd bp vss amp_test
+xq   q  q        vhi gp vdd bp vss inv1_1
+cip xp ip 1.0p
+cfp xp om 0.1p  
+xfp xp om q vss pseudo
+*rfp xp om 1T
+
+cim xm im 1.0p
+cfm xm op 0.1p  
+xfm xm op q vss pseudo
+*rfm xm op 1T
+.ends
+
+.subckt posamp ip im op om vhi gp vdd bp vss
+
+xamp xp xm op om vhi gp vdd bp vss vierunauta
+cip ip xp 1.0p
+cfp om xp 0.1p  
+*xfp xp om q vss pseudo
+rfp xp om 1T
+
+cim im  xm 1.0p
+cfm op  xm 0.1p  
+*xfm xm op q vss pseudo
+rfp xp om 1T
+.ends
+
+.param pvhi = 1.8
+vhi vhi 0 {pvhi}
+vcm cm  0 {1}
+vss vss 0 0
+
+*ecm cm vss q vss 1
+vin in cm dc 0 ac 1 sine(0 1m 1)
+eip ip cm in cm  1
+eim im cm in cm  0
+
+*xbias                  vhi gp vdd bp   vss inv_bias
+*xldo                   vhi gp vdd bp q vss ldo
+*eha vha vss vhi vss 1
+*vha vha vhi 0
+vda vdd vda 0
+xpreamp ip im op om    vhi gp vda bp   vss preamp
+*xrld    ip im       cm vhi gp vdd bp   vss rld
+*xposamp op om xp xm    vhi gp vdd bp   vss preamp
+clp op vss 10p
+clm om vss 10p
+
+xq q0 q0               vhi gp vd0 bp   vd0 inv1_1
+evd0 vd0 vss vdd vss 1
+
+vdd vdd vss 1.5
+vgp vhi gp  0
+vbp vdd bp  0
+
+*.save v(in) v(ip) v(im) v(xp) v(xm) v(op) v(om)
+*.save v(q) (vdd) v(vhi)
+*.save i(vhi)
+.ic v(vhi)={pvhi}
+
+*.option gmin=1e-15
+.option method="Gear"
+.control
+	ac dec 10 1e-3 1e6
+	let vi = ip-im
+	let vo = op-om
+	plot db(vo/vi)
+
+	noise v(op,om) vin dec 10 1 1e2
+	noise v(op) vin dec 10 1 1e2
+*	noise v(op) eip dec 10 1 1e2
+		
+	print noise2.inoise_total
+	print noise2.onoise_total
+	plot noise1.inoise_spectrum noise1.onoise_spectrum loglog
+	
+*	op
+*	print i(vda)
+	
+*	tran 1u 4m 100u uic
+*	tran 1m 4  1   uic
+*	let vi = ip-im
+*	let vx = xp-xm
+*	let vo = op-om
+*	plot vi vo
+.endc

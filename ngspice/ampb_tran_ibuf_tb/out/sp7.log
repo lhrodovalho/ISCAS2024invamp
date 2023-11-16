@@ -1,0 +1,103 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * amplifier b buffer transient testbench
+
+Doing analysis at TEMP = 0.000000 and TNOM = 27.000000
+
+Note: vin: dc value used for op instead of transient time=0 value.
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Warning: Further gmin increment
+Trying gmin =   5.6234E-04 Note: One successful gmin step
+Trying gmin =   2.3714E-04 Note: One successful gmin step
+Trying gmin =   6.4938E-05 Note: One successful gmin step
+Trying gmin =   9.3057E-06 Note: One successful gmin step
+Trying gmin =   3.5227E-06 Note: One successful gmin step
+Trying gmin =   1.3335E-06 Note: One successful gmin step
+Trying gmin =   3.1059E-07 Note: One successful gmin step
+Trying gmin =   7.2339E-08 Warning: Further gmin increment
+Trying gmin =   2.1577E-07 Note: One successful gmin step
+Trying gmin =   1.2493E-07 Warning: Further gmin increment
+Trying gmin =   1.8822E-07 Note: One successful gmin step
+Trying gmin =   1.5334E-07 Note: One successful gmin step
+Trying gmin =   1.1277E-07 Note: One successful gmin step
+Trying gmin =   7.1115E-08 Note: One successful gmin step
+Trying gmin =   3.5614E-08 Note: One successful gmin step
+Trying gmin =   1.2622E-08 Note: One successful gmin step
+Trying gmin =   2.6629E-09 Note: One successful gmin step
+Trying gmin =   2.6629E-10 Note: One successful gmin step
+Trying gmin =   1.0000E-10 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 1
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Warning: Further gmin increment
+Trying gmin =   5.6234E-04 Note: One successful gmin step
+Trying gmin =   2.3714E-04 Note: One successful gmin step
+Trying gmin =   6.4938E-05 Note: One successful gmin step
+Trying gmin =   9.3057E-06 Note: One successful gmin step
+Trying gmin =   3.5227E-06 Note: One successful gmin step
+Trying gmin =   8.2047E-07 Note: One successful gmin step
+Trying gmin =   1.9110E-07 Warning: Further gmin increment
+Trying gmin =   5.6998E-07 Note: One successful gmin step
+Trying gmin =   3.3003E-07 Note: One successful gmin step
+Trying gmin =   1.4541E-07 Warning: Further gmin increment
+Trying gmin =   2.6888E-07 Note: One successful gmin step
+Trying gmin =   1.9773E-07 Note: One successful gmin step
+Trying gmin =   1.2470E-07 Note: One successful gmin step
+Trying gmin =   6.2448E-08 Note: One successful gmin step
+Trying gmin =   2.2131E-08 Note: One successful gmin step
+Trying gmin =   4.6692E-09 Note: One successful gmin step
+Trying gmin =   4.6692E-10 Note: One successful gmin step
+Trying gmin =   1.0000E-10 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vdd                                        2.5
+vss                                          0
+cm                                    0.776897
+vreg                                   1.55379
+in                                    0.276897
+ref                                   0.776897
+xbias.vlo                                    0
+iq0                                   0.648192
+xbias.q                               0.775835
+gp                                     1.62249
+xbias.x                               0.529845
+bp                                     1.36298
+xbias.tihi                             1.55379
+xvreg.y                              0.0266364
+xvreg.x                                0.69757
+xvreg.bpb                              1.36335
+xvreg.bn                              0.620318
+xvreg.bpa                              1.72702
+iq                                    0.648192
+xvreg.s                                      0
+xvreg.bn0                             0.621359
+vs0                                          0
+o                                      1.27609
+xdut.y                                0.680668
+xdut.x                                0.768184
+x                                     0.776491
+xdut.x64.c_cap_int1                  -0.595418
+e.xdut.x64.ec_cap#branch                     0
+eref#branch                                  0
+ecm#branch                         4.99595e-05
+vs0#branch                          5.5516e-05
+viq#branch                          7.6671e-06
+vin#branch                         4.99595e-05
+vss#branch                         0.000144995
+vdd#branch                        -0.000144995
+
+
+No. of Data Rows : 1020
+slewp               =  7.667660e-08 targ=  8.343078e-07 trig=  7.576312e-07
+slewm               =  7.047165e-08 targ=  3.256163e-07 trig=  2.551446e-07
+ngspice-40 done

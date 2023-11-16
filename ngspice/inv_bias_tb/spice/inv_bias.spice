@@ -1,0 +1,20 @@
+.subckt inv_bias vhi gp vdd bp vss
+
+.subckt vref ref vdd vss
+x0a vhi vhi vdd vdd p3v2_1
+x0b vlo vhi vss vss n3v2_1
+
+x1a ref ref vdd vdd p3v1_2
+x1b vss vlo ref ref p3v1_2
+.ends
+
+xref ref vdd vss vref
+
+x8a vdd gp  vhi vhi p6v2_1
+x8b bp0 ref vdd bp  p3v2_1
+x8c bp0 ref vss vss n3v2_1
+
+x9a bp  gp  vhi vhi p6v2_1
+x9b vss bp0 bp  bp  p3v2_1
+
+.ends

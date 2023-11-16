@@ -1,0 +1,44 @@
+* ldo
+
+.subckt ldo vhi gp vdd bp q vss
+
+x0a vhi s   vhi vhi p6v2_1
+x0b bpa s   bnb vss n6v1_1
+*x0c gp  s   q   vss n6v1_1
+x0d s   bnb vss vss n6v1_1
+
+x1a d1a bpa vhi vhi p6v2_1
+x1b z   bpb d1a vhi p6v2_1
+x1c z   z   x   vss n6v2_1
+x1d x   x   y   vss n3v1_1
+x1e y   x   vss vss n3v2_1
+
+x2a d2a bpa vhi vhi p6v1_2
+x2b bpa bpb d2a vhi p6v1_2
+x2c bpa bnb d2d vss n6v1_2
+x2d d2d bna y   vss n3v1_1
+
+x3a d3a bpa vhi vhi p6v1_2
+x3b bnb bpb d3a vhi p6v1_2
+x3c bnb bnb bna vss n6v1_2
+x3d bna bna vss vss n3v1_2
+
+x4a bpb bpb vhi vhi p6v1_4
+x4c bpb bnb d4d vss n6v2_1
+x4d d4d bna vss vss n3v2_1
+
+x5a gp  gp0 vhi vhi p6v2_1
+x5c gp  bnb d5d vss n6v2_1
+x5d d5d bna vss vss n3v2_1
+
+x6a gp0 gp0 vhi vhi p6v2_1
+x6c gp0 bnb d6d vss n6v2_1
+x6d d6d q   vss vss n3v2_1
+
+cgp vdd gp 10f
+
+x7a vdd gp  vhi vhi p6v2_1
+x7b q   q   vdd bp  p3v2_1
+x7c q   q   vss vss n3v2_1
+
+.ends

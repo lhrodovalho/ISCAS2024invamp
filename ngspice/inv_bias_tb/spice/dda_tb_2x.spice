@@ -1,0 +1,114 @@
+* inverter testbench
+
+.include "../../models/design.ngspice"
+*.lib "../../models/sm141064.ngspice" ss
+.lib "../../models/sm141064.ngspice" typical
+*.lib "../../models/sm141064.ngspice" ff
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+.temp 25
+
+.include array.spice
+
+.subckt inv1_1 in out vdd vss
+xp out in vdd vdd p1_1
+xn out in vss vss n1_1
+.ends
+
+.subckt inv2_1 in out vdd vss
+xl in out vdd vss inv1_1
+xr in out vdd vss inv1_1
+.ends
+
+.subckt ddaa ipa ima ipb imb op om vdd vss
+xap ipa om vdd vss inv2_1
+xam ima op vdd vss inv2_1
+xbp ipb om vdd vss inv2_1
+xbm imb op vdd vss inv2_1
+xcp op  om vdd vss inv1_1
+xcm om  op vdd vss inv1_1
+xdp op  op vdd vss inv1_1
+xdm om  om vdd vss inv1_1
+.ends
+
+.subckt ddab ipa ima ipb imb op om vdd vss
+xap ipa xm vdd vss inv2_1
+xam ima xp vdd vss inv2_1
+xbp ipb xm vdd vss inv2_1
+xbm imb xp vdd vss inv2_1
+xcp xp  xm vdd vss inv1_1
+xcm xm  xp vdd vss inv1_1
+xdp xp  xp vdd vss inv1_1
+xdm xm  xm vdd vss inv1_1
+xep xm  op vdd vss inv2_1
+xem xp  om vdd vss inv2_1
+xfp ipa om vdd vss inv2_1
+xfm ima op vdd vss inv2_1
+xgp ipb om vdd vss inv2_1
+xgm imb op vdd vss inv2_1
+.ends
+
+.subckt ddac ipa ima ipb imb op om vdd vss
+xap ipa xm vdd vss inv2_1
+xam ima xp vdd vss inv2_1
+xbp ipb xm vdd vss inv2_1
+xbm imb xp vdd vss inv2_1
+xcp xp  xm vdd vss inv1_1
+xcm xm  xp vdd vss inv1_1
+xdp xp  xp vdd vss inv1_1
+xdm xm  xm vdd vss inv1_1
+xep xm  op vdd vss inv2_1
+xem xp  om vdd vss inv2_1
+xfp ipa om vdd vss inv2_1
+xfm ima op vdd vss inv2_1
+xgp ipb om vdd vss inv2_1
+xgm imb op vdd vss inv2_1
+xhp ipb y  vdd vss inv1_1
+xhm imb y  vdd vss inv1_1
+xi  y   y  vdd vss inv1_1
+xjp y   xp vdd vss inv2_1
+xjm y   xm vdd vss inv2_1
+.ends
+
+.param pvdd = 2.5
+.param pav = 10
+.param pr  = 1e6
+
+vdd vdd 0 {pvdd}
+vcm cm  0 {pvdd/2}
+vss vss 0 0
+
+vin in cm 0
+eip ip cm in cm  1
+eim im cm in cm -1
+
+xa ip im xpa xma opa oma vdd vss ddab
+rpa opa xma {pr}
+rma oma xpa {pr}
+rfa xma xpa {2/(pav-1)*pr}
+
+xb ip im xpb xmb opb omb vdd vss ddac
+rpb opb xmb {pr}
+rmb omb xpb {pr}
+rfb xmb xpb {2/(pav-1)*pr}
+
+.param delta = {pvdd}
+.param k = 1001
+.dc vin {-delta/2} {delta/2} {delta/k}
+.option method="Gear"
+.control
+	run
+	let vi  = ip-im
+	let voa = opa-oma
+	let vob = opb-omb
+	let vocma = (opa+oma)/2
+	let vocmb = (opb+omb)/2
+*	let ava = db(abs(deriv(voa)/deriv(vi)))
+*	let avb = db(abs(deriv(vob)/deriv(vi)))
+	let ava = deriv(voa)/deriv(vi)
+	let avb = deriv(vob)/deriv(vi)
+	plot voa vob
+	plot ava vs voa avb vs vob
+	plot vocma vs voa vocmb vs vob
+.endc

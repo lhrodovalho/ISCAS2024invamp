@@ -1,0 +1,136 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * amplifier b open-loop ac testbench
+
+Doing analysis at TEMP = 70.000000 and TNOM = 27.000000
+
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   1.0000E-06 Warning: Further gmin increment
+Trying gmin =   5.6234E-06 Note: One successful gmin step
+Trying gmin =   2.3714E-06 Note: One successful gmin step
+Trying gmin =   1.5399E-06 Note: One successful gmin step
+Trying gmin =   8.0584E-07 Note: One successful gmin step
+Trying gmin =   3.0505E-07 Warning: Further gmin increment
+Trying gmin =   6.3209E-07 Note: One successful gmin step
+Trying gmin =   4.3911E-07 Note: One successful gmin step
+Trying gmin =   2.5426E-07 Note: One successful gmin step
+Trying gmin =   1.4722E-07 Note: One successful gmin step
+Trying gmin =   6.4865E-08 Note: One successful gmin step
+Trying gmin =   1.8970E-08 Note: One successful gmin step
+Trying gmin =   3.0004E-09 Note: One successful gmin step
+Trying gmin =   3.0004E-10 Note: One successful gmin step
+Trying gmin =   3.0004E-11 Note: One successful gmin step
+Trying gmin =   3.0004E-12 Note: One successful gmin step
+Trying gmin =   1.0000E-12 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 1
+Doing analysis at TEMP = 70.000000 and TNOM = 27.000000
+
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   1.0000E-06 Warning: Further gmin increment
+Trying gmin =   5.6234E-06 Note: One successful gmin step
+Trying gmin =   2.3714E-06 Note: One successful gmin step
+Trying gmin =   1.5399E-06 Note: One successful gmin step
+Trying gmin =   8.0584E-07 Note: One successful gmin step
+Trying gmin =   3.0505E-07 Warning: Further gmin increment
+Trying gmin =   6.3209E-07 Note: One successful gmin step
+Trying gmin =   4.3911E-07 Note: One successful gmin step
+Trying gmin =   2.5426E-07 Note: One successful gmin step
+Trying gmin =   1.4722E-07 Note: One successful gmin step
+Trying gmin =   6.4865E-08 Note: One successful gmin step
+Trying gmin =   1.8970E-08 Note: One successful gmin step
+Trying gmin =   3.0004E-09 Note: One successful gmin step
+Trying gmin =   3.0004E-10 Note: One successful gmin step
+Trying gmin =   3.0004E-11 Note: One successful gmin step
+Trying gmin =   3.0004E-12 Note: One successful gmin step
+Trying gmin =   1.0000E-12 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 901
+Doing analysis at TEMP = 70.000000 and TNOM = 27.000000
+
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   1.0000E-06 Warning: Further gmin increment
+Trying gmin =   5.6234E-06 Note: One successful gmin step
+Trying gmin =   2.3714E-06 Note: One successful gmin step
+Trying gmin =   1.5399E-06 Note: One successful gmin step
+Trying gmin =   8.0584E-07 Note: One successful gmin step
+Trying gmin =   3.0505E-07 Warning: Further gmin increment
+Trying gmin =   6.3209E-07 Note: One successful gmin step
+Trying gmin =   4.3911E-07 Note: One successful gmin step
+Trying gmin =   2.5426E-07 Note: One successful gmin step
+Trying gmin =   1.4722E-07 Note: One successful gmin step
+Trying gmin =   6.4865E-08 Note: One successful gmin step
+Trying gmin =   1.8970E-08 Note: One successful gmin step
+Trying gmin =   3.0004E-09 Note: One successful gmin step
+Trying gmin =   3.0004E-10 Note: One successful gmin step
+Trying gmin =   3.0004E-11 Note: One successful gmin step
+Trying gmin =   3.0004E-12 Note: One successful gmin step
+Trying gmin =   1.0000E-12 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 901
+Doing analysis at TEMP = 70.000000 and TNOM = 27.000000
+
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   1.0000E-06 Warning: Further gmin increment
+Trying gmin =   5.6234E-06 Note: One successful gmin step
+Trying gmin =   2.3714E-06 Note: One successful gmin step
+Trying gmin =   1.5399E-06 Note: One successful gmin step
+Trying gmin =   8.0584E-07 Note: One successful gmin step
+Trying gmin =   3.0505E-07 Warning: Further gmin increment
+Trying gmin =   6.3209E-07 Note: One successful gmin step
+Trying gmin =   4.3911E-07 Note: One successful gmin step
+Trying gmin =   2.5426E-07 Note: One successful gmin step
+Trying gmin =   1.4722E-07 Note: One successful gmin step
+Trying gmin =   6.4865E-08 Note: One successful gmin step
+Trying gmin =   1.8970E-08 Note: One successful gmin step
+Trying gmin =   3.0004E-09 Note: One successful gmin step
+Trying gmin =   3.0004E-10 Note: One successful gmin step
+Trying gmin =   3.0004E-11 Note: One successful gmin step
+Trying gmin =   3.0004E-12 Note: One successful gmin step
+Trying gmin =   1.0000E-12 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 901
+gbw                 =  5.434316e+06
+pm                  =  6.030071e+01
+av_1hz              =  8.586094e+01
+cmrr_1hz            =  1.081205e+02
+psrr_1hz            =  1.320792e+02
+idd = 7.647187e-05
+fom = 1.421259e+02
+binary raw file "./out/{num}.raw"
+Doing analysis at TEMP = 70.000000 and TNOM = 27.000000
+
+OP information in rawfile.
+
+Total analysis time (seconds) = 1.496
+
+Total elapsed time (seconds) = 1.769 
+
+Total DRAM available = 7841.914 MB.
+DRAM currently available =  768.285 MB.
+Maximum ngspice program size =   50.246 MB.
+Current ngspice program size =   32.742 MB.
+
+Shared ngspice pages =   11.141 MB.
+Text (code) pages =    5.461 MB.
+Stack = 0 bytes.
+Library pages =   29.805 MB.
+

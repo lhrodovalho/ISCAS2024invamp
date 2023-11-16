@@ -1,0 +1,90 @@
+* Amplifier B buffer transient testbench
+
+*** header
+* corner list
+.include ../../models/design.ngspice
+.lib ../../models/sm141064.ngspice ss
+.lib ../../models/sm141064.ngspice mimcap_typical
+.param pvdd = 2.5
+.temp 0
+
+* no monte carlo
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+
+.include ../../netlists/ref.spice
+.include ../../netlists/bias.spice
+.include ../../netlists/sbcs_vreg.spice
+.include ../../netlists/ampb.spice
+
+vdd vdd 0 {pvdd}
+vss vss 0 0
+ecm cm vss vreg vss 0.5
+
+.param pamp   = 1.0
+.param pfreq  = 1e6
+.param pper   = {1/pfreq}
+.param pdly   = {pper/4}
+.param ptrf   = {pper/1000}
+.param pwidth = {pper/2-ptrf}
+ 
+vin  in cm dc 0 pulse({-pamp/2} {pamp/2} {pdly} {ptrf} {ptrf} {pwidth} {pper})
+
+* bias
+*xref  ref            vreg    vss ref
+eref ref vss vreg vss 0.5
+xbias ref iq0 vdd gp vreg bp vss bias
+xvreg iq  gp  vdd            vss sbcs_vreg
+viq   iq  iq0 0
+
+* dut
+.param pr = 10k
+vs0 vs0 vss 0
+xdut x cm o vdd gp vreg bp vs0 ampb
+rf x o  {pr}
+ri x in {pr}
+cl o cm 20p
+
+.op
+
+.param tend   = {pper}
+.param tstart = 0
+.param tstep  = {pper/100}
+.tran 1n {tend} {tstart}
+
+.option gmin=1e-10
+.control
+
+	run
+
+	let itotal = abs(op.i(vdd))
+	let iamp   = abs(op.i(vs0))
+        let ptotal = abs(op.i(vdd)*op.v(vreg))
+        let pamp   = abs(op.i(vs0)*op.v(vs0))
+	
+	let vi = tran.in-tran.cm
+	let vo = tran.o-tran.cm
+
+	let vmax =  1.0*0.9/2
+	let vmin = -1.0*0.9/2
+	let dv   = vmax-vmin
+	
+	meas tran slewp trig vo rise=1 val=vmin targ vo rise=1 val=vmax
+	meas tran slewm trig vo fall=1 val=vmax targ vo fall=1 val=vmin
+
+	let slewrp = dv/slewp
+	let slewrm = dv/slewm
+
+	let slewr  = (slewrp+slewrm)/2
+
+	let fom = 100*slewr*20p/iamp
+
+	echo "slewrp,slewrm,slewr,fom" > ./meas/ampb_tran_ibuf_tb.meas6
+	echo "$&slewrp,$&slewrm,$&slewr,$&fom" >> ./meas/ampb_tran_ibuf_tb.meas6
+
+	*plot vi vo	
+	wrdata ./data/ampb_tran_ibuf_tb.dat6 vi vo
+	exit
+.endc 
+

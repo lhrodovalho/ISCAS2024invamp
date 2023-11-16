@@ -1,0 +1,66 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * inverter testbench
+
+Doing analysis at TEMP = 0.000000 and TNOM = 27.000000
+
+Note: vdd: dc value used for op instead of transient time=0 value.
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Warning: Further gmin increment
+Trying gmin =   5.6234E-05 Note: One successful gmin step
+Trying gmin =   2.3714E-05 Note: One successful gmin step
+Trying gmin =   6.4938E-06 Note: One successful gmin step
+Trying gmin =   1.7783E-06 Note: One successful gmin step
+Trying gmin =   2.5483E-07 Warning: Further gmin increment
+Trying gmin =   1.0941E-06 Note: One successful gmin step
+Trying gmin =   5.2803E-07 Note: One successful gmin step
+Trying gmin =   1.7703E-07 Warning: Further gmin increment
+Trying gmin =   4.0179E-07 Note: One successful gmin step
+Trying gmin =   2.6670E-07 Warning: Further gmin increment
+Trying gmin =   3.6267E-07 Note: One successful gmin step
+Trying gmin =   3.1100E-07 Note: One successful gmin step
+Trying gmin =   2.4698E-07 Note: One successful gmin step
+Trying gmin =   1.7478E-07 Note: One successful gmin step
+Trying gmin =   1.0405E-07 Note: One successful gmin step
+Trying gmin =   4.7791E-08 Warning: Further gmin increment
+Trying gmin =   8.5657E-08 Note: One successful gmin step
+Trying gmin =   6.3982E-08 Note: One successful gmin step
+Trying gmin =   4.1304E-08 Note: One successful gmin step
+Trying gmin =   2.1424E-08 Note: One successful gmin step
+Trying gmin =   8.0035E-09 Note: One successful gmin step
+Trying gmin =   1.8274E-09 Note: One successful gmin step
+Trying gmin =   1.9937E-10 Note: One successful gmin step
+Trying gmin =   1.9937E-11 Note: One successful gmin step
+Trying gmin =   1.0000E-11 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 501
+vddmin              =  2.410260e+00
+vreg0               =  1.997897e+00
+vq0                 =  9.980070e-01
+iq0                 =  6.791655e-06
+qerr = -9.42491e-04
+drop = 4.123630e-01
+binary raw file "./out/{num}.raw"
+Doing analysis at TEMP = 0.000000 and TNOM = 27.000000
+
+Note: vdd: dc value used for op instead of transient time=0 value.
+
+Total analysis time (seconds) = 0.824
+
+Total elapsed time (seconds) = 1.004 
+
+Total DRAM available = 7841.914 MB.
+DRAM currently available = 1026.047 MB.
+Maximum ngspice program size =   37.957 MB.
+Current ngspice program size =   19.941 MB.
+
+Shared ngspice pages =   10.633 MB.
+Text (code) pages =    5.461 MB.
+Stack = 0 bytes.
+Library pages =   17.516 MB.
+

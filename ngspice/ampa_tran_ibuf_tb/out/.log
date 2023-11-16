@@ -1,0 +1,22 @@
+
+No compatibility mode selected!
+
+
+Circuit: * amplifier b open-loop ac testbench
+
+Doing analysis at TEMP = 25.000000 and TNOM = 27.000000
+
+
+No. of Data Rows : 1
+Doing analysis at TEMP = 25.000000 and TNOM = 27.000000
+
+
+No. of Data Rows : 901
+gbw                 =  6.023906e+06
+pm                  =  6.012442e+01
+av_1hz              =  8.391788e+01
+cmrr_1hz            =  9.166321e+01
+psrr_1hz            =  7.660758e+01
+idd = 9.709741e-05
+fom = 9.305973e+01
+ngspice-35 done

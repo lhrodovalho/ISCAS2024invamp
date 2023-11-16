@@ -1,0 +1,79 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * inverter testbench
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Note: vdd: dc value used for op instead of transient time=0 value.
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   3.1623E-06 Note: One successful gmin step
+Trying gmin =   5.6234E-07 Note: One successful gmin step
+Trying gmin =   5.6234E-08 Warning: Further gmin increment
+Trying gmin =   3.1623E-07 Warning: Further gmin increment
+Trying gmin =   4.8697E-07 Note: One successful gmin step
+Trying gmin =   3.9242E-07 Note: One successful gmin step
+Trying gmin =   2.8387E-07 Note: One successful gmin step
+Trying gmin =   1.7466E-07 Note: One successful gmin step
+Trying gmin =   8.4291E-08 Note: One successful gmin step
+Trying gmin =   2.8260E-08 Warning: Further gmin increment
+Trying gmin =   6.4140E-08 Note: One successful gmin step
+Trying gmin =   4.2575E-08 Note: One successful gmin step
+Trying gmin =   2.3024E-08 Note: One successful gmin step
+Trying gmin =   9.1565E-09 Note: One successful gmin step
+Trying gmin =   2.2964E-09 Note: One successful gmin step
+Trying gmin =   2.8843E-10 Note: One successful gmin step
+Trying gmin =   2.8843E-11 Note: One successful gmin step
+Trying gmin =   1.0000E-11 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   1.0000E-06 Note: One successful gmin step
+Trying gmin =   1.0000E-07 Note: One successful gmin step
+Trying gmin =   1.0000E-08 Warning: Further gmin increment
+Trying gmin =   5.6234E-08 Note: One successful gmin step
+Trying gmin =   2.3714E-08 Note: One successful gmin step
+Trying gmin =   1.0000E-08 Warning: Further gmin increment
+Trying gmin =   1.9110E-08 Note: One successful gmin step
+Trying gmin =   1.3824E-08 Note: One successful gmin step
+Trying gmin =   8.5053E-09 Note: One successful gmin step
+Trying gmin =   5.2330E-09 Note: One successful gmin step
+Trying gmin =   2.5255E-09 Note: One successful gmin step
+Trying gmin =   8.4671E-10 Note: One successful gmin step
+Trying gmin =   1.6437E-10 Note: One successful gmin step
+Trying gmin =   1.6437E-11 Note: One successful gmin step
+Trying gmin =   1.0000E-11 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 501
+vddmin              =  2.072351e+00
+vreg0               =  1.738847e+00
+vq0                 =  8.685311e-01
+iq0                 =  7.210092e-06
+qerr = -1.02643e-03
+drop = 3.335040e-01
+binary raw file "./out/{num}.raw"
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Note: vdd: dc value used for op instead of transient time=0 value.
+
+Total analysis time (seconds) = 0.971
+
+Total elapsed time (seconds) = 1.146 
+
+Total DRAM available = 7841.914 MB.
+DRAM currently available = 1027.457 MB.
+Maximum ngspice program size =   37.953 MB.
+Current ngspice program size =   19.793 MB.
+
+Shared ngspice pages =   10.504 MB.
+Text (code) pages =    5.461 MB.
+Stack = 0 bytes.
+Library pages =   17.512 MB.
+

@@ -1,0 +1,104 @@
+* Amplifier B open-loop AC testbench
+
+*** header
+* corner list
+.include ../../models/design.ngspice
+.lib ../../models/sm141064.ngspice typical
+.lib ../../models/sm141064.ngspice mimcap_typical
+.param pvdd = 2.5
+.temp 25
+
+* no monte carlo
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+
+.include ../../netlists/ref.spice
+.include ../../netlists/bias.spice
+.include ../../netlists/sbcs_vreg.spice
+.include ../../../magic/ampb.spice
+
+vdd vdd 0 {pvdd}
+vss vss 0 0
+*vcm cm  0 0.75
+ecm cm vss vreg vss 0.5
+
+vip ip cm dc 0 ac 0
+vim im cm dc 0 ac 1
+
+xref  ref            vreg    vss ref
+xbias ref iq0 vdd gp vreg bp vss bias
+xvreg iq  gp  vdd            vss sbcs_vreg
+vo iq iq0 0
+
+* dut
+*evreg0 vreg vss vreg0 vss 1 
+*vgp  vdd  gp  0
+*vreg vreg vss 1.5
+*vbp  vreg bp  0
+vs0 vs0 vss 0
+xdut x ip o vdd gp vreg bp vs0 ampb
+ci x im 1e12
+lf x o  1e12
+cl o cm 20p
+
+.option gmin=1e-15
+.control
+
+	* differential input
+	alter vip ac=0
+	alter vim ac=1
+	alter vdd ac=0
+
+	op
+	ac dec 100 1 1G
+
+	* common-mode input
+	alter vip ac=1
+	alter vim ac=1
+	alter vdd ac=0
+
+	op
+	ac dec 100 1 1G
+
+	* common-mode input
+	alter vip ac=0
+	alter vim ac=0
+	alter vdd ac=1
+
+	op
+	ac dec 100 1 1G
+
+	* measurements
+	let av_df   = db(ac1.v(o))		
+	let ph      = cphase(ac1.v(o))*180/3.14
+	let idd     = abs(op1.i(vs0))
+
+	let av_cm   = db(ac2.v(o))		
+	let av_ps   = db(ac3.v(o))		
+
+	let cmrr = av_df-av_cm
+	let psrr = av_df-av_ps		
+
+	meas ac gbw when av_df=0	
+	meas ac pm find ph at=gbw
+	meas ac av_1hz find av_df at=1
+	meas ac cmrr_1hz find cmrr at=1
+	meas ac psrr_1hz find psrr at=1
+	
+	let fom = 100*gbw*20p/idd
+        print idd	
+	print fom
+		
+	plot av_df av_cm av_ps
+	plot ph
+	plot cmrr
+	plot psrr
+	
+	echo "gbw,pm,av_1hz,cmrr_1hz,psrr_1hz,idd,fom" > ./meas/ampa_ac_tb.meas0
+	echo "$&gbw,$&pm,$&av_1hz,$&cmrr_1hz,$&psrr_1hz,$&idd,$&fom" >> ./meas/ampa_ac_tb.meas0
+	
+	wrdata ./data/ampa_ac_tb.dat0 av_df ph av_cm av_ps cmrr psrr
+*	exit
+.endc
+

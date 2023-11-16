@@ -1,0 +1,77 @@
+* inverter testbench
+
+.include "../../models/design.ngspice"
+*.lib "../../models/sm141064.ngspice" ss
+.lib "../../models/sm141064.ngspice" typical
+*.lib "../../models/sm141064.ngspice" ff
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+.temp 25
+
+.include array.spice
+
+.subckt inv1_1 in out vdd vss
+xp out in vdd vdd p1_1
+xn out in vss vss n1_1
+.ends
+
+.subckt inv2_1 in out vdd vss
+xl in out vdd vss inv1_1
+xr in out vdd vss inv1_1
+.ends
+
+.subckt ddaa ipa ima ipb imb op om vdd vss
+xap ipa om vdd vss inv2_1
+xam ima op vdd vss inv2_1
+xbp ipb om vdd vss inv2_1
+xbm imb op vdd vss inv2_1
+xcp op  om vdd vss inv1_1
+xcm om  op vdd vss inv1_1
+xdp op  op vdd vss inv1_1
+xdm om  om vdd vss inv1_1
+.ends
+
+.subckt ddab ipa ima ipb imb op om vdd vss
+xap ipa xm vdd vss inv2_1
+xam ima xp vdd vss inv2_1
+xbp ipb xm vdd vss inv2_1
+xbm imb xp vdd vss inv2_1
+xcp xp  xm vdd vss inv1_1
+xcm xm  xp vdd vss inv1_1
+xdp xp  xp vdd vss inv1_1
+xdm xm  xm vdd vss inv1_1
+xep xm  op vdd vss inv2_1
+xem xp  om vdd vss inv2_1
+xfp ipa om vdd vss inv2_1
+xfm ima op vdd vss inv2_1
+xgp ipb om vdd vss inv2_1
+xgm imb op vdd vss inv2_1
+.ends
+
+.param pvdd = 1.5
+vdd vdd 0 {pvdd}
+vcm cm  0 {pvdd/2}
+vss vss 0 0
+
+vin in cm 0
+eip ip cm in cm  1
+eim im cm in cm -1
+
+xa ip im oma opa opa oma vdd vss ddaa
+xb ip im omb opb opb omb vdd vss ddab
+
+.param delta = {pvdd}
+.param k = 1001
+.dc vin {-delta/2} {delta/2} {delta/k}
+.option method="Gear"
+.control
+	run
+	let vi  = ip-im
+	let voa = opa-oma
+	let vob = opb-omb
+	let ava = db(abs(deriv(voa)))
+	let avb = db(abs(deriv(vob)))
+	plot voa vob
+	plot ava avb
+.endc

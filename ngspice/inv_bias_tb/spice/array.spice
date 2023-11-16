@@ -1,0 +1,123 @@
+* array
+.param pl = 48.0u
+.subckt n3v1_1 d g s b
+xd d g s b nfet_03v3 w=1.8u l={pl}
+xs x g s b nfet_03v3 w=1.8u l={pl}
+.ends
+
+.subckt n3v1_2 d g s b
+xd d g x b n3v1_1
+xs x g s b n3v1_1
+.ends
+
+.subckt n3v2_2 d g s b
+xl d g s b n3v1_2
+xr d g s b n3v1_2
+.ends
+
+.subckt n3v1_4 d g s b
+xd d g x b n3v1_2
+xs x g s b n3v1_2
+.ends
+
+.subckt n3v2_1 d g s b
+xl d g s b n3v1_1
+xr d g s b n3v1_1
+.ends
+
+.subckt n3v4_1 d g s b
+xl d g s b n3v2_1
+xr d g s b n3v2_1
+.ends
+
+.subckt p3v1_1 d g s b
+X0 d g s b pfet_03v3 w=1.5u l={pl}
+X1 d g s b pfet_03v3 w=1.5u l={pl}
+.ends
+
+.subckt p3v1_2 d g s b
+xd d g x b p3v1_1
+xs x g s b p3v1_1
+.ends
+
+.subckt p3v2_2 d g s b
+xl d g s b p3v1_2
+xr d g s b p3v1_2
+.ends
+
+.subckt p3v1_4 d g s b
+xd d g x b p3v1_2
+xs x g s b p3v1_2
+.ends
+
+.subckt p3v2_1 d g s b
+xl d g s b p3v1_1
+xr d g s b p3v1_1
+.ends
+
+.subckt p3v4_1 d g s b
+xl d g s b p3v2_1
+xr d g s b p3v2_1
+.ends
+
+* array
+
+.subckt n6v1_1 d g s b
+xd d g x b nfet_06v0 w=1.8u l={pl}
+xs x g s b nfet_06v0 w=1.8u l={pl}
+.ends
+
+.subckt n6v1_2 d g s b
+xd d g x b n6v1_1
+xs x g s b n6v1_1
+.ends
+
+.subckt n6v2_2 d g s b
+xl d g s b n6v1_2
+xr d g s b n6v1_2
+.ends
+
+.subckt n6v1_4 d g s b
+xd d g x b n6v1_2
+xs x g s b n6v1_2
+.ends
+
+.subckt n6v2_1 d g s b
+xl d g s b n6v1_1
+xr d g s b n6v1_1
+.ends
+
+.subckt n6v4_1 d g s b
+xl d g s b n6v2_1
+xr d g s b n6v2_1
+.ends
+
+.subckt p6v1_1 d g s b
+X0 d g s b pfet_06v0 w=1.5u l={pl}
+X1 d g s b pfet_06v0 w=1.5u l={pl}
+.ends
+
+.subckt p6v1_2 d g s b
+xd d g x b p6v1_1
+xs x g s b p6v1_1
+.ends
+
+.subckt p6v2_2 d g s b
+xl d g s b p6v1_2
+xr d g s b p6v1_2
+.ends
+
+.subckt p6v1_4 d g s b
+xd d g x b p6v1_2
+xs x g s b p6v1_2
+.ends
+
+.subckt p6v2_1 d g s b
+xl d g s b p6v1_1
+xr d g s b p6v1_1
+.ends
+
+.subckt p6v4_1 d g s b
+xl d g s b p6v2_1
+xr d g s b p6v2_1
+.ends

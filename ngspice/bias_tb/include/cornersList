@@ -1,0 +1,16 @@
+num,temp,mos
+0,27,typical
+1,27,ss
+2,27,ff
+3,27,sf
+4,27,fs
+5,0,typical
+6,0,ss
+7,0,ff
+8,0,sf
+9,0,fs
+10,70,typical
+11,70,ss
+12,70,ff
+13,70,sf
+14,70,fs

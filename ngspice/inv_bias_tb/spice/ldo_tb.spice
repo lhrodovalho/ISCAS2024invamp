@@ -1,0 +1,35 @@
+* inverter testbench
+
+.include "../../models/design.ngspice"
+.lib "../../models/sm141064.ngspice" ss
+*.lib "../../models/sm141064.ngspice" sf
+*.lib "../../models/sm141064.ngspice" typical
+*.lib "../../models/sm141064.ngspice" fs
+*.lib "../../models/sm141064.ngspice" ff
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+.temp 25
+
+.include array.spice
+.include inv_bias.spice
+.include ldo.spice
+
+.param pvhi = 3.3
+vhi vhi 0 {pvhi}
+vss vss 0 0
+
+xbias vhi gp vdd bp   vss inv_bias
+*vb bp vdd 0
+xldo  vhi gp vdd bp q vss ldo
+
+.ic v(vhi)={pvhi}
+*.option gmin=1e-15
+.option method="Gear"
+.control
+	dc vhi 1.0 6.0 100m
+	plot vhi gp vdd bp q vss
+
+	tran 10n 10u uic
+	plot vhi gp vdd bp q vss
+.endc

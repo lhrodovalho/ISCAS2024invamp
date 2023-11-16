@@ -1,0 +1,102 @@
+* inverter testbench
+
+.include "../../models/design.ngspice"
+*.lib "../../models/sm141064.ngspice" ss
+.lib "../../models/sm141064.ngspice" typical
+*.lib "../../models/sm141064.ngspice" ff
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+.temp 25
+
+.include array.spice
+
+.subckt inv1_1 in out vdd vss
+xp out in vdd vdd p1_1
+xn out in vss vss n1_1
+.ends
+
+.subckt inv2_1 in out vdd vss
+xl in out vdd vss inv1_1
+xr in out vdd vss inv1_1
+.ends
+
+.subckt ampa ip im op om vdd vss
+xap ip om vdd vss inv2_1
+xam im op vdd vss inv2_1
+xbp op x  vdd vss inv2_1
+xbm om x  vdd vss inv2_1
+xc  x  x  vdd vss inv1_1
+xd  x  y  vdd vss inv2_1
+xe  y  y  vdd vss inv1_1
+xfp y  op vdd vss inv2_1
+xfm y  om vdd vss inv2_1
+.ends
+
+.subckt ampb ip im op om vdd vss
+xap ip om vdd vss inv2_1
+xam im op vdd vss inv2_1
+xbp op x  vdd vss inv1_1
+xbm om x  vdd vss inv1_1
+xc  x  x  vdd vss inv2_1
+xd  x  y  vdd vss inv2_1
+xe  y  y  vdd vss inv2_1
+xfp y  op vdd vss inv2_1
+xfm y  om vdd vss inv2_1
+xgp ip y  vdd vss inv1_1
+xgm ip y  vdd vss inv1_1
+.ends
+
+.subckt ampc ip im op om vdd vss
+xap ip xm vdd vss inv2_1
+xam im xp vdd vss inv2_1
+xbp xp xm vdd vss inv1_1
+xbm xm xp vdd vss inv1_1
+xcp xp xp vdd vss inv1_1
+xcm xm xm vdd vss inv1_1
+xdp xm op vdd vss inv2_1
+xdm xp om vdd vss inv2_1
+xep ip om vdd vss inv2_1
+xem im op vdd vss inv2_1
+.ends
+
+.subckt ampd ip im op om vdd vss
+xap ip xm vdd vss inv1_1
+xam im xp vdd vss inv1_1
+xbp ip x  vdd vss inv1_1
+xbm im x  vdd vss inv1_1
+xc  x  x  vdd vss inv2_1
+xdp x  xm vdd vss inv1_1
+xdm x  xp vdd vss inv1_1
+xep xm op vdd vss inv2_1
+xem xp om vdd vss inv2_1
+xfp ip om vdd vss inv2_1
+xfm im op vdd vss inv2_1
+.ends
+
+.param pvdd = 1.5
+vdd vdd 0 {pvdd}
+vcm cm  0 {pvdd/2}
+vss vss 0 0
+
+vin in cm 0
+eip ip cm in cm  1
+eim im cm in cm  1
+
+xa ip im opa oma vdd vss ampd
+xb ip im opb omb vdd vss ampe
+
+.param delta = {pvdd}
+.param k = 1001
+.dc vin {-delta/2} {delta/2} {delta/k}
+.option method="Gear"
+.control
+	run
+	let vi  = in
+	let voa = (opa+oma)/2
+	let vob = (opb+omb)/2
+	let ava = db(abs(deriv(voa)))
+	let avb = db(abs(deriv(vob)))
+	plot voa vob
+	plot ava avb
+.endc

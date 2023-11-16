@@ -1,0 +1,33 @@
+* inverter testbench
+
+.include "../../models/design.ngspice"
+*.lib "../../models/sm141064.ngspice" ss
+.lib "../../models/sm141064.ngspice" typical
+*.lib "../../models/sm141064.ngspice" ff
+.param
++  sw_stat_global = 0
++  sw_stat_mismatch = 0
+.temp 25
+
+*.include array.spice
+*.include sbcs.spice
+.include ../../netlists/sbcs.spice
+
+.param pvdd = 3
+vdd vdd 0 {pvdd}
+vss vss 0 0
+
+xdut io vdd vss sbcs
+vo vdd io 0
+
+.ic v(vdd)={pvdd}
+*.ic v(vdd)= 0.1
+*.option gmin=1e-15
+.option method="Gear"
+.control
+	dc vdd 1.0 6.0 10m
+	plot i(vo)
+
+	tran 10n 10u 10n uic
+	plot i(vo) ylimit 0 0.5u
+.endc

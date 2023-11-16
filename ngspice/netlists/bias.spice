@@ -1,0 +1,92 @@
+* NGSPICE file created from bias.ext - technology: gf180mcuC
+
+.subckt bias ref iq vhi gp vdd bp vss
+X0 a_n336_6# a_n336_6# vss vss nfet_03v3 ad=0.54p pd=2.4u as=1.08p ps=4.8u w=1.8u l=0.6u
+X1 vss vlo a_n180_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X2 iq q a_108_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X3 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X4 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X5 vss vlo a_n132_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X6 vdd ref x bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X7 vlo tihi vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X8 a_n84_12# ref vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X9 vdd q q bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X10 a_n228_12# vlo vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X11 a_n36_12# ref x vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X12 a_204_12# vlo vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X13 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X14 vhi gp bp vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X15 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X16 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X17 a_156_12# q iq vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X18 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X19 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X20 vdd a_n336_6# tihi bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X21 bp x vss bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X22 vhi gp vdd vhi pfet_06v0 ad=1.08p pd=4.8u as=0.54p ps=2.4u w=1.8u l=0.6u
+X23 vdd tihi a_n132_396# bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X24 x ref vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X25 a_108_396# tihi vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X26 vss q a_60_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X27 vss vlo a_204_12# vss nfet_03v3 ad=1.08p pd=4.8u as=0.54p ps=2.4u w=1.8u l=0.6u
+X28 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X29 vdd tihi a_108_396# bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X30 q q a_12_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X31 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=1.08p ps=4.8u w=1.8u l=0.6u
+X32 bp gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X33 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X34 vdd tihi a_204_396# bp pfet_03v3 ad=0.9p pd=4.2u as=0.45p ps=2.1u w=1.5u l=0.6u
+X35 vss q a_156_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X36 tihi a_n336_6# vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.9p ps=4.2u w=1.5u l=0.6u
+X37 a_n132_396# tihi bp bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X38 vdd ref x bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X39 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X40 vss x bp bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X41 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X42 a_156_396# tihi vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X43 a_108_12# q vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X44 vhi gp bp vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X45 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X46 a_12_12# q vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X47 a_60_12# q q vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X48 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X49 bp tihi a_n276_396# bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X50 bp x vss bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X51 vhi gp vdd vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X52 x ref vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X53 bp gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X54 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X55 vdd q q bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X56 a_n180_12# vlo vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X57 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X58 vdd tihi a_156_396# bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X59 a_n132_12# vlo vss vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X60 vss x bp bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X61 q q vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X62 vss a_n336_6# a_n336_6# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X63 a_n276_396# tihi vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X64 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X65 vdd gp vhi vhi pfet_06v0 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X66 vss tihi vlo vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X67 x ref a_n84_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X68 vss vlo a_n228_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X69 vss ref a_n36_12# vss nfet_03v3 ad=0.54p pd=2.4u as=0.54p ps=2.4u w=1.8u l=0.6u
+X70 q q vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+X71 a_204_396# tihi vdd bp pfet_03v3 ad=0.45p pd=2.1u as=0.45p ps=2.1u w=1.5u l=0.6u
+C0 gp vdd 1.72f
+C1 bp ref 1.59f
+C2 q ref 1.53f
+C3 q bp 1.83f
+C4 bp tihi 5.03f
+C5 x ref 1.11f
+C6 bp x 2.08f
+C7 bp vdd 9.51f
+C8 q vdd 1.34f
+C9 vdd tihi 2.35f
+C10 vlo q 2.46f
+C11 x vdd 1.1f
+C12 vhi gp 13.9f
+C13 vhi bp 1.78f
+C14 vhi vdd 10.9f
+.ends
+

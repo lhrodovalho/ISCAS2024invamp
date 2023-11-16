@@ -1,0 +1,35 @@
+timestamp 1697197950
+version 8.3
+tech gf180mcuC
+style ngspice()
+scale 1000 1 5
+resistclasses 1000000 3250000 6300 7000 6300 7000 7300 1000000 60000 185000 60000 185000 6300 7000 6300 7000 6800 7300 350000 310000 1000000 90 90 90 90 40
+parameters nfet_03v3_dss l=l w=w a1=as p1=ps a2=ad p2=pd l1=s_sab l2=d_sab
+parameters nfet_03v3 l=l w=w a1=as p1=ps a2=ad p2=pd
+parameters pfet_06v0_dss l=l w=w a1=as p1=ps a2=ad p2=pd l1=s_sab l2=d_sab
+parameters pfet_06v0 l=l w=w a1=as p1=ps a2=ad p2=pd
+port "ref" 1 -60 -48 288 -36 m3
+port "vdd" 2 -60 84 288 120 m3
+port "vss" 3 -60 -360 288 -324 m3
+node "m2_132_n204#" 0 79.8988 132 -204 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 144 48 0 0 0 0 0 0
+node "tihi" 68 2563.32 -12 -300 mvpdif 0 0 0 0 0 0 0 0 0 0 432 96 7920 504 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2160 408 1440 288 2880 504 0 0 0 0
+node "tilo" 69 2868.78 0 -156 p 0 0 0 0 432 96 0 0 0 0 0 0 7920 504 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1872 384 4608 864 3600 672 0 0 0 0
+node "ref" 6505 20479.6 -60 -48 m3 38016 1104 0 0 10944 1824 0 0 0 0 1728 384 7920 504 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 15264 2592 6336 1152 4176 720 0 0 0 0
+node "vdd" 10744 29416.4 -60 84 m3 57024 1656 0 0 16416 2736 0 0 0 0 1296 288 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18576 3096 9360 1608 25056 1536 0 0 0 0
+substrate "vss" 0 0 -60 -360 m3 0 0 0 0 432 96 32256 5256 0 0 864 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 34128 5616 11376 2016 20880 2208 0 0 0 0
+cap "tilo" "vdd" 1424
+cap "tihi" "ref" 42.802
+cap "tihi" "vdd" 2466.91
+cap "vdd" "ref" 5927.54
+cap "m2_132_n204#" "tilo" 33.607
+cap "m2_132_n204#" "tihi" 1.40667
+cap "m2_132_n204#" "ref" 3.76397
+cap "m2_132_n204#" "vdd" 84.3802
+cap "tilo" "tihi" 443.133
+cap "tilo" "ref" 4234.04
+device msubckt nfet_03v3 168 -300 169 -299 l=60 w=36 "vss" "tihi" 120 0 "tilo" 36 432,96 "vss" 36 432,96
+device msubckt pfet_06v0 0 -300 1 -299 l=60 w=36 "vdd" "tihi" 120 0 "tihi" 36 432,96 "vdd" 36 432,96
+device msubckt pfet_06v0 168 -132 169 -131 l=60 w=36 "vdd" "ref" 120 0 "vdd" 36 432,96 "ref" 36 432,96
+device msubckt pfet_06v0 0 -132 1 -131 l=60 w=36 "ref" "tilo" 120 0 "vss" 36 432,96 "ref" 36 432,96
+device msubckt pfet_06v0 168 12 169 13 l=60 w=36 "ref" "tilo" 120 0 "ref" 36 432,96 "vss" 36 432,96
+device msubckt pfet_06v0 0 12 1 13 l=60 w=36 "vdd" "ref" 120 0 "ref" 36 432,96 "vdd" 36 432,96
